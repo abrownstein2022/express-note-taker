@@ -1,35 +1,38 @@
-const diagnostics = require('express').Router();
+const notes = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
+//look for helper code
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
-// GET Route for retrieving diagnostic information
-diagnostics.get('/', (req, res) => {
-  readFromFile('./db/diagnostics.json').then((data) =>
+// GET Route for retrieving notes information
+notes.get('/', (req, res) => {
+  readFromFile('./db/notes.json').then((data) =>
     res.json(JSON.parse(data))
   );
 });
 
 // POST Route for a error logging
-diagnostics.post('/', (req, res) => {
+notes.post('/', (req, res) => {
   console.log(req.body);
 
-  const { isValid, errors } = req.body;
+  //destructuring of notes data
+  const { title, text } = req.body;
 
   const payload = {
-    time: Date.now(),
-    error_id: uuidv4(),
-    errors,
+    title,
+    id: uuidv4(),  //gets the id
+    text,
   };
 
-  if (!isValid) {
-    readAndAppend(payload, './db/diagnostics.json');
-    res.json(`Diagnostic information added 🔧`);
+  //if title is empty
+  if (!title) {
+    readAndAppend(payload, './db/notes.json');
+    res.json(`Notes information added`);
   } else {
     res.json({
       message: 'Object is valid, not logging. Check front end implementation',
-      error_id: payload.error_id,
+      id: payload.id,
     });
   }
 });
 
-module.exports = diagnostics;
+module.exports = notes;

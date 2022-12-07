@@ -33,6 +33,7 @@ const getNotes = () =>
     },
   });
 
+//POST request
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -66,6 +67,7 @@ const renderActiveNote = () => {
   }
 };
 
+//this is the body of the text box
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
