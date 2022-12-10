@@ -36,7 +36,8 @@ notes.post('/', (req, res) => {
 });
 
 // DELETE Route for a specific note
-notes.delete('/:note_id', (req, res) => {
+//there is a function hanldenotedelete on line 83 in public/js/index.js
+notes.delete('/api/notes/:note_id', (req, res) => {
   const noteId = req.params.note_id;
   readFromFile('./db/notes.json')
     .then((data) => JSON.parse(data))
@@ -51,5 +52,11 @@ notes.delete('/:note_id', (req, res) => {
       res.json(`Note ${noteId} has been deleted 🗑️`);
     });
 });
+
+// app.delete('/api/notes/:id', (req, res) => {
+//   deleteNote(req.params.id, allNotes);
+//   res.json(true);
+// });
+
 
 module.exports = notes;
