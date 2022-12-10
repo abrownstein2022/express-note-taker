@@ -30,7 +30,12 @@ app.get('/notes', (req, res) =>
 
 // Wildcard route to direct users to a 404 page
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/error.html'))
+  res.sendFile(path.join(__dirname, 'public/404.html'))
+);
+
+//alexis 12/9/22
+app.delete('/api/notes/:id', (req, res) => 
+   res.json(`DELETE route`)
 );
 
 app.listen(PORT, () =>
