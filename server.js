@@ -6,6 +6,7 @@ const api = require('./routes/index.js');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+//app.use(express.static('public'));
 
 // Import custom middleware, "cLog"
 //app.use(clog);
@@ -14,17 +15,16 @@ const app = express();
 //start api 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//app.use('/api', api);
+app.use('/api', api);
 
 app.use(express.static('public'));
 
 // GET Route for homepage
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, 'index.html'))
 );
 
 // GET Route for notes page
-console.log(__dirname);
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
