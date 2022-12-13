@@ -7,7 +7,7 @@ let noteList;
 console.log(window.location.pathname);
 
 if (window.location.pathname === '/notes') {
-  console.log("inside if window location");
+  console.log("inside if /notes window location");
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -37,9 +37,9 @@ const getNotes = () =>
   });
 
 //POST request
-console.log('before save note:')
 const saveNote = (note) =>
-fetch('/notes', {
+
+fetch('/api/notes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -47,9 +47,9 @@ fetch('/notes', {
     body: JSON.stringify(note),
   });
 
-//console.log('delete note by id:', id)
+
 const deleteNote = (id) =>
-  fetch(`/notes/${id}`, {
+fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -57,12 +57,12 @@ const deleteNote = (id) =>
   });
 
 const renderActiveNote = () => {
-console.log('render active note')
-
+console.log('inside renderActiveNote')
+console.log(activeNote.id)
   hide(saveNoteBtn);
-
+//12/13/22 alexis changed note_id to id in notes.json to match code below
   if (activeNote.id) {
-    noteTitle.setAttribute('readonly', true);
+  noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
@@ -92,11 +92,10 @@ console.log('save note newNote')
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
-  console.log('deleting note with event:', e)
 
   const note = e.target;
+  console.log(note)
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-  console.log('deleting note id:', noteId)
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -111,7 +110,9 @@ const handleNoteDelete = (e) => {
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
+  console.log(e.target.parentElement)
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+  console.log(activeNote);
   renderActiveNote();
 };
 
@@ -121,11 +122,8 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
-console.log("before handleRenderSaveBtn");
 
 const handleRenderSaveBtn = () => {
-   console.log(noteTitle.value.trim());
-   console.log(noteText.value.trim());
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
   } else {
