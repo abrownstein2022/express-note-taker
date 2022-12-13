@@ -6,6 +6,7 @@ const goBack = (e) => {
 
   // Built-in browser interface that allows changing the browser session history, or in this case to go back.
   history.back();
+  //document.window.history.back()
 };
 
 goBackBtn.addEventListener('click', goBack);

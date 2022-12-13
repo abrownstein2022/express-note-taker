@@ -14,7 +14,7 @@ const app = express();
 //start api 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
+//app.use('/api', api);
 
 app.use(express.static('public'));
 
@@ -24,6 +24,7 @@ app.get('/', (req, res) =>
 );
 
 // GET Route for notes page
+console.log(__dirname);
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );

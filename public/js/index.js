@@ -4,7 +4,10 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+console.log(window.location.pathname);
+
 if (window.location.pathname === '/notes') {
+  console.log("inside if window location");
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -12,7 +15,7 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-// Show an element
+// Show an element or hide 
 const show = (elem) => {
   elem.style.display = 'inline';
 };
@@ -34,8 +37,9 @@ const getNotes = () =>
   });
 
 //POST request
+console.log('before save note:')
 const saveNote = (note) =>
-  fetch('/api/notes', {
+fetch('/notes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,8 +47,9 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+//console.log('delete note by id:', id)
 const deleteNote = (id) =>
-  fetch(`/api/notes/${id}`, {
+  fetch(`/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -52,6 +57,8 @@ const deleteNote = (id) =>
   });
 
 const renderActiveNote = () => {
+console.log('render active note')
+
   hide(saveNoteBtn);
 
   if (activeNote.id) {
@@ -73,6 +80,8 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value,
   };
+console.log('save note newNote')
+
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
@@ -83,9 +92,11 @@ const handleNoteSave = () => {
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
+  console.log('deleting note with event:', e)
 
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  console.log('deleting note id:', noteId)
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -110,7 +121,11 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
+console.log("before handleRenderSaveBtn");
+
 const handleRenderSaveBtn = () => {
+   console.log(noteTitle.value.trim());
+   console.log(noteText.value.trim());
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
   } else {
