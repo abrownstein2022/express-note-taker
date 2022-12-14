@@ -45,7 +45,7 @@ WHEN I click on the Save icon
 THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
 WHEN I click on an existing note in the list in the left-hand column
 THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
+WHEN I click on the Plus icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 
 ```
@@ -78,8 +78,7 @@ $ npm run watch
 
 ## Usage
 
-```md
-1. Open the app using Express or Heroku (https://ch11-express-notes-taker.herokuapp.com)
+1. Open the app using Express or Heroku https://ch11-express-notes-taker.herokuapp.com
 2. From the landing page, click on the notes page to see a page with existing notes on the left-hand column, plus empty fields
 to enter a new note title and text.
 3. Press the Save icon to save this info and see it in the left-hand column.
@@ -87,18 +86,20 @@ to enter a new note title and text.
 5. Press the Delete icon to delete a note.
 
 **Please review to the screenshots below to view the application:**
-```
-![example image welcome page with login and register links](./public/images/welcome-page.jpg)
 
-![example image login page](./public/images/login-page.jpg)
-
-![example image register page](./public/images/register-page.jpg)
-
+![example image get started page](./public/images/ch11-express-screen1-get-started-pg.jpg)
+![example image note entry screen](./public/images/ch11-express-screen2-note-entry-screen.jpg)
+![example image note entry screen save](./public/images/ch11-express-screen3-note-entry-screen-save.jpg)
+![example image see new note to left after save](./public/images/ch11-express-screen4-note-to-left-after-save.jpg)
+![example image see 2 notes to left after another save](./public/images/ch11-express-screen5-notes-to-left-after-save.jpg)
+![example image click on note to left to see rendered in note entry page](./public/images/ch11-express-screen6-click-on-note-to-left-to-see-on-right.jpg)
+![example image click on delete icon to delete note](./public/images/ch11-express-screen7-click-on-delete.jpg)
+![example image see note was deleted](./public/images/ch11-express-screen8-after-delete.jpg)
 
 ## Credits
 
 ```md
-Alexis Brownstein, bootcamp tutor: Phil and Wyzant tutor: Mike
+Alexis Brownstein
 ```
 
 ## License
