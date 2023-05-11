@@ -1,8 +1,9 @@
-# Note Taker Application with Express deployed on Heroku
+# Note Taker Application with Express
 ![license](https://img.shields.io/badge/license-MIT-black)
 
-Deployed Link on Heroku:
+<!--Deployed Link on Heroku:
 https://ch11-express-notes-taker.herokuapp.com
+-->
 
 ## Table of Contents
 
@@ -19,7 +20,7 @@ https://ch11-express-notes-taker.herokuapp.com
 ## Description
 This application, called Note Taker, can be used to write and save notes.
 
-It uses an Express.js back end and saves and retrieves note data from a JSON file, and is deployed on Heroku.
+It uses an Express.js back end and saves and retrieves note data from a JSON file.
 
 **User Story**
 
@@ -53,10 +54,10 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 ## Installation
 <!-- audience is other developers -->
 
-1. Clone this GitHub repo https://github.com/abrownstein2022/ch11-express-note-taker:
+1. Clone this GitHub repo https://github.com/abrownstein2022/express-note-taker:
 <!-- Check out the gh cli tool from github -->
 ```bash
-$ gh repo clone /abrownstein2022/ch11-express-note-taker
+$ gh repo clone /abrownstein2022/express-note-taker
 ```
 2. From the terminal, install npm and uuid:
 
@@ -78,11 +79,11 @@ $ npm run watch
 
 ## Usage
 
-1. Open the app using Express or Heroku https://ch11-express-notes-taker.herokuapp.com
+1. Open the app using Express.
 2. From the landing page, click on the notes page to see a page with existing notes on the left-hand column, plus empty fields
 to enter a new note title and text.
 3. Press the Save icon to save this info and see it in the left-hand column.
-4. When you click on the Write icon in the top navigation, I see empty fields to enter a new note title and text. 
+4. When you click on the Write icon in the top navigation, you see empty fields to enter a new note title and text. 
 5. Press the Delete icon to delete a note.
 
 **Please review to the screenshots below to view the application:**
@@ -139,7 +140,6 @@ Feattures for *future* development
  -->
 **The main features in this project are:**<br>
 1. Uses Express.js and uuid
-1. Deployed on Heroku
 1. GET, POST and DELETE routes for retrieving, adding and deleteing note data
 1. Dates-fns to format the order date in vieworder.handlebars (https://date-fns.org/)
 1. Necessary folder structure 
@@ -161,5 +161,5 @@ I can be reached at alexis@drdatabase.com.
 
 This GitHub repo can be found at:
   
-https://github.com/abrownstein2022/ch11-express-note-taker
+https://github.com/abrownstein2022/express-note-taker
  
